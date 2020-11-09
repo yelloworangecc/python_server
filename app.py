@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- coding:utf-8 -*-
 from flask import Flask
 from flask import request
 from flask import Response
@@ -7,11 +9,11 @@ import qrcode
 from threading import Thread
 import socket
 
-# udp接收线程函数
+# udp陆脫脢脮脧脽鲁脤潞炉脢媒
 def udp_recv(dict):
     host_addr = ('0.0.0.0',8888)
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #允许重复绑定
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #脭脢脨铆脰脴赂麓掳贸露篓
     sock.bind(host_addr)
     while True:
         data, peer_addr = sock.recvfrom(64)
@@ -42,3 +44,6 @@ def generate_qrcode():
 @app.route('/home_ip')
 def get_home_ip():
     return dict['ip']
+
+if __name__ == '__main__':
+  app.run('0.0.0.0',80,False)
